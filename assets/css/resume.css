@@ -1,0 +1,192 @@
+/* Résumé document view, screen and print. */
+
+.cv-bar {
+  background: var(--void);
+  color: var(--chalk-2);
+  padding-block: 1.25rem;
+}
+
+.cv-bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cv-bar p {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  max-width: 46ch;
+}
+
+.cv-bar .btn { --btn-bg: var(--signal); --btn-fg: var(--void); }
+
+.cv-page { padding-block: clamp(2.5rem, 5vw, 4.5rem); }
+
+.cv {
+  width: min(100% - (var(--gutter) * 2), 52rem);
+  margin-inline: auto;
+}
+
+.cv__name {
+  font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.1rem);
+  font-variation-settings: "wdth" 110, "wght" 780;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.cv__contact {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink-2);
+}
+
+.cv__contact a { color: var(--signal-ink); text-decoration: none; }
+.cv__contact a:hover { text-decoration: underline; }
+
+.cv__section { margin-top: clamp(2rem, 4vw, 3rem); }
+
+.cv__section > h2 {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal-ink);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ink);
+  font-variation-settings: normal;
+}
+
+.cv__entry { margin-top: 1.5rem; break-inside: avoid; }
+
+.cv__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.15rem 1rem;
+}
+
+.cv__org {
+  font-size: 1.1rem;
+  font-variation-settings: "wdth" 102, "wght" 680;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.cv__when {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.cv__role {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  margin-top: 0.15rem;
+}
+
+.cv__sub {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-variation-settings: "wdth" 100, "wght" 640;
+  color: var(--ink);
+}
+
+.cv__list {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+
+.cv__list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.cv__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.7rem;
+  height: 1px;
+  background: var(--signal);
+}
+
+.cv__list strong {
+  color: var(--ink);
+  font-variation-settings: "wdth" 100, "wght" 620;
+}
+
+.cv__skill {
+  display: grid;
+  gap: 0.15rem 1.25rem;
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.93rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+@media (min-width: 42em) {
+  .cv__skill { grid-template-columns: minmax(10rem, 0.32fr) minmax(0, 1.68fr); }
+}
+
+.cv__skill b {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media print {
+  @page { size: letter; margin: 0.55in; }
+
+  html, body { background: #fff !important; color: #000 !important; }
+
+  .masthead, .cv-bar, .footer, .contact, .skip { display: none !important; }
+
+  .cv-page { padding: 0 !important; }
+  .cv { width: 100% !important; max-width: none !important; }
+
+  body { font-size: 10pt; line-height: 1.38; }
+
+  .cv__name { font-size: 22pt; }
+  .cv__contact { font-size: 8.5pt; margin-top: 0.4rem; color: #000 !important; }
+  .cv__contact a { color: #000 !important; }
+
+  .cv__section { margin-top: 12pt; }
+  .cv__section > h2 {
+    font-size: 8.5pt;
+    color: #000 !important;
+    border-bottom: 0.8pt solid #000;
+    padding-bottom: 2pt;
+    break-after: avoid;
+  }
+
+  .cv__entry { margin-top: 8pt; }
+  .cv__org { font-size: 11pt; }
+  .cv__when, .cv__role { font-size: 8.5pt; color: #000 !important; }
+  .cv__list { gap: 2pt; margin-top: 4pt; }
+  .cv__list li { font-size: 9.5pt; line-height: 1.34; color: #000 !important; padding-left: 12pt; }
+  .cv__list li::before { background: #000; width: 7pt; top: 0.62em; }
+  .cv__list strong { color: #000 !important; }
+  .cv__sub { font-size: 9.5pt; margin-top: 6pt; }
+  .cv__skill { font-size: 9pt; padding-block: 3pt; color: #000 !important; border-bottom: 0.4pt solid #999; }
+  .cv__skill b { font-size: 8pt; color: #000 !important; }
+}

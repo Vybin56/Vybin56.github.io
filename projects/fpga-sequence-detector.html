@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPGA Sequence Detector and Logic Optimization | Abdelrahman Almazlom</title>
+<meta name="description" content="An 8 state Moore FSM in Quartus Prime, re-encoded in Gray code and simplified from 83 to 63 gate inputs.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FPGA Sequence Detector and Logic Optimization | Abdelrahman Almazlom">
+<meta property="og:description" content="An 8 state Moore FSM in Quartus Prime, re-encoded in Gray code and simplified from 83 to 63 gate inputs.">
+<meta property="og:image" content="../assets/img/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%23E54723'/%3E%3Cpolygon%20points='32,11%2053,53%2042,53%2032,31%2022,53%2011,53'%20fill='%23150F0D'/%3E%3Crect%20x='23'%20y='38'%20width='18'%20height='7'%20fill='%23150F0D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Azeret+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.classList.add("has-js");</script>
+</head>
+
+<body>
+<a class="skip" href="#story">Skip to the write up</a>
+
+<header class="masthead masthead-project">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">
+      <span class="wordmark__mark" aria-hidden="true">AA</span>
+      <span>Abdelrahman Almazlom</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="../index.html#work">Work</a></li>
+        <li data-optional><a href="../index.html#experience">Experience</a></li>
+        <li data-optional><a href="../index.html#capability">Skills</a></li>
+        <li><a href="../resume.html">R&eacute;sum&eacute;</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="shell">
+    <p class="crumbs"><a href="../index.html#work">Work</a> <span aria-hidden="true">/</span> <span>FPGA Sequence Detector</span></p>
+  </div>
+
+  <section class="proj-head">
+    <div class="shell">
+      <p class="proj-head__kicker rise">Digital logic</p>
+      <h1 class="rise" style="--delay:80ms">FPGA Sequence Detector and Logic Optimization</h1>
+      <p class="proj-head__lede rise" style="--delay:160ms">An 8 state Moore machine that detects a 4 bit pattern inside a serial stream, then a second pass that made the same behaviour measurably cheaper in hardware.</p>
+      <dl class="datasheet rise" style="--delay:240ms">
+        <div><dt>Role</dt><dd>FSM design, state encoding, optimization, simulation</dd></div>
+        <div><dt>Tool</dt><dd>Quartus Prime</dd></div>
+        <div><dt>Elements</dt><dd>D flip-flops</dd></div>
+        <div><dt>States</dt><dd>8, Moore</dd></div>
+        <div><dt>Encoding</dt><dd>Custom Gray code</dd></div>
+        <div><dt>Gate input cost</dt><dd>83 down to 63, a 24 percent reduction</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="bleed">
+    <div class="shell">
+      <figure>
+        <div class="work__media--figure" style="max-width:52rem;margin-inline:auto;background:transparent;padding:0">
+        <svg viewBox="0 0 480 330" role="img" aria-label="Ring diagram of an eight state Moore finite state machine with Gray coded state labels">
+          <g fill="none" stroke="#3B302C" stroke-width="1"><circle cx="240" cy="168" r="112"/></g>
+          <g fill="none" stroke="#E54723" stroke-width="2.5" stroke-linecap="round">
+            <path d="M240 56 A112 112 0 0 1 319 89"/><path d="M352 168 A112 112 0 0 1 319 247"/>
+            <path d="M240 280 A112 112 0 0 1 161 247"/><path d="M128 168 A112 112 0 0 1 161 89"/>
+          </g>
+          <g fill="#150F0D" stroke="#E54723" stroke-width="2.5">
+            <circle cx="240" cy="56" r="22"/><circle cx="319" cy="89" r="22"/><circle cx="352" cy="168" r="22"/><circle cx="319" cy="247" r="22"/>
+            <circle cx="240" cy="280" r="22"/><circle cx="161" cy="247" r="22"/><circle cx="128" cy="168" r="22"/><circle cx="161" cy="89" r="22"/>
+          </g>
+          <g fill="#ECE6E5" font-family="Azeret Mono, monospace" font-size="10" text-anchor="middle">
+            <text x="240" y="60">000</text><text x="319" y="93">001</text><text x="352" y="172">011</text><text x="319" y="251">010</text>
+            <text x="240" y="284">110</text><text x="161" y="251">111</text><text x="128" y="172">101</text><text x="161" y="93">100</text>
+          </g>
+          <g fill="#E54723" font-family="Azeret Mono, monospace" font-size="12" text-anchor="middle" letter-spacing="1">
+            <text x="240" y="164">GRAY CODED</text><text x="240" y="184">83 &#8594; 63</text>
+          </g>
+          <text x="240" y="322" fill="#98908E" font-family="Azeret Mono, monospace" font-size="11" text-anchor="middle" letter-spacing="1.6">8-STATE MOORE FSM</text>
+        </svg>
+        </div>
+        <figcaption class="caption"><b>State graph</b>Eight states, Gray coded so exactly one bit changes on each transition around the ring.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="shell article" id="story">
+    <section class="chapter reveal">
+      <h2>The machine</h2>
+      <div class="chapter__body">
+        <p>A <strong>Moore</strong> finite state machine with <strong>8 states</strong>, implemented with <strong>D flip-flops</strong>, detecting a specific 4 bit binary sequence anywhere inside a continuous stream.</p>
+        <p>Detecting inside a stream is what makes the state graph interesting. On a partial match that then breaks, the machine cannot simply restart from the initial state: it has to fall back to whichever state correctly represents the suffix it has already seen.</p>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Cheaper in gates</h2>
+      <div class="chapter__body">
+        <p class="lede" style="max-width:46ch;color:var(--ink)">Same behaviour, less hardware.</p>
+        <ul class="speclist">
+          <li>A custom <strong>Gray code</strong> state assignment means only one state bit changes per transition, which reduces the number of terms each next state equation has to cover.</li>
+          <li><strong>Karnaugh map</strong> simplification on the resulting equations cut total gate input cost from <strong>83 to 63</strong>.</li>
+          <li>That is a <strong>24 percent</strong> reduction in circuit complexity with no change in what the machine does.</li>
+          </ul>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Verification</h2>
+      <div class="chapter__body">
+        <p>Timing and state transitions were checked in functional simulation in <strong>Quartus Prime</strong>, walking the machine through partial matches, broken matches and back to back detections rather than only the happy path.</p>
+      </div>
+    </section>
+  </div>
+
+  <nav class="pager" aria-label="Project navigation">
+    <a href="function-generator.html">
+      <span class="pager__dir">Previous project</span>
+      <span class="pager__name">Analog Function Generator</span>
+    </a>
+    <a href="golf-cart-pdb.html">
+      <span class="pager__dir">Next project</span>
+      <span class="pager__name">Golf Cart Power Distribution Board</span>
+    </a>
+  </nav>
+
+  <section class="contact">
+    <div class="shell">
+      <h2 class="reveal">Let's build something.</h2>
+      <p class="contact__body reveal">
+        I am looking for engineering co-op and internship work in power electronics, hardware design,
+        embedded systems or test.
+      </p>
+      <div class="contact__rows reveal">
+        <a class="contact__row" href="mailto:as.alzm@outlook.com"><span>Email</span><span>as.alzm@outlook.com</span></a>
+        <a class="contact__row" href="tel:+15198725539"><span>Phone</span><span>+1 (519) 872 5539</span></a>
+        <a class="contact__row" href="https://www.linkedin.com/in/a-almazlom/" target="_blank" rel="noopener"><span>LinkedIn</span><span>linkedin.com/in/a-almazlom</span></a>
+        <a class="contact__row" href="../resume.html"><span>R&eacute;sum&eacute;</span><span>Full r&eacute;sum&eacute;, ready to print</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="shell footer__inner">
+    <p>Abdelrahman Almazlom &middot; London, Ontario</p>
+    <p><a href="../index.html">All work</a></p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

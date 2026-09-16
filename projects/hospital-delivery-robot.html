@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital Autonomous Secure Delivery Car | Abdelrahman Almazlom</title>
+<meta name="description" content="An autonomous medical delivery robot on a custom Arduino shield, with RFID access control and dual rail power.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hospital Autonomous Secure Delivery Car | Abdelrahman Almazlom">
+<meta property="og:description" content="An autonomous medical delivery robot on a custom Arduino shield, with RFID access control and dual rail power.">
+<meta property="og:image" content="../assets/img/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%23E54723'/%3E%3Cpolygon%20points='32,11%2053,53%2042,53%2032,31%2022,53%2011,53'%20fill='%23150F0D'/%3E%3Crect%20x='23'%20y='38'%20width='18'%20height='7'%20fill='%23150F0D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Azeret+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.classList.add("has-js");</script>
+</head>
+
+<body>
+<a class="skip" href="#story">Skip to the write up</a>
+
+<header class="masthead masthead-project">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">
+      <span class="wordmark__mark" aria-hidden="true">AA</span>
+      <span>Abdelrahman Almazlom</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="../index.html#work">Work</a></li>
+        <li data-optional><a href="../index.html#experience">Experience</a></li>
+        <li data-optional><a href="../index.html#capability">Skills</a></li>
+        <li><a href="../resume.html">R&eacute;sum&eacute;</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="shell">
+    <p class="crumbs"><a href="../index.html#work">Work</a> <span aria-hidden="true">/</span> <span>Hospital Delivery Robot</span></p>
+  </div>
+
+  <section class="proj-head">
+    <div class="shell">
+      <p class="proj-head__kicker rise">Western University, team design project</p>
+      <h1 class="rise" style="--delay:80ms">Hospital Autonomous Secure Delivery Car</h1>
+      <p class="proj-head__lede rise" style="--delay:160ms">An autonomous medical delivery robot that drives a corridor, stops for obstacles, and only opens to an authorized RFID tag. The electronics were committed to a custom single layer shield instead of left on a breadboard.</p>
+      <dl class="datasheet rise" style="--delay:240ms">
+        <div><dt>Role</dt><dd>PCB design, power system, integration and test</dd></div>
+        <div><dt>Team</dt><dd>Section 3, Team 6</dd></div>
+        <div><dt>Controller</dt><dd>Arduino Uno with a custom shield</dd></div>
+        <div><dt>Sensing</dt><dd>HC-SR04, RC522 RFID, HC-05, DHT11</dd></div>
+        <div><dt>Power</dt><dd>11.1 V LiPo into 5.1 V and 7.9 V rails</dd></div>
+        <div><dt>Runtime</dt><dd>45 minutes continuous</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="bleed">
+    <div class="shell-wide">
+      <figure>
+        <img src="../assets/img/delivery-robot-sm.webp" srcset="../assets/img/delivery-robot-sm.webp 820w, ../assets/img/delivery-robot-lg.webp 1200w" sizes="(min-width: 92rem) 88rem, 94vw" alt="The assembled delivery robot on a lab bench: a clear acrylic chassis carrying an Arduino Uno with the custom shield, an ultrasonic sensor at the front, an RFID reader and a cardboard cargo box, with ribbon cable running between them" width="1200" height="1600" decoding="async">
+        <figcaption class="caption"><b>Integration build</b>The shield stacks directly onto the Arduino Uno, with every sensor on a labelled header.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="shell article" id="story">
+    <section class="chapter reveal">
+      <h2>The problem</h2>
+      <div class="chapter__body">
+        <p>Moving supplies between hospital departments is repetitive, time sensitive, and carries a chain of custody requirement. The brief was a small vehicle that drives itself down a corridor, refuses to run into anything, and will not release its cargo to the wrong person.</p>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>The shield</h2>
+      <div class="chapter__body">
+        <p class="lede" style="max-width:46ch;color:var(--ink)">Getting the build off the breadboard.</p>
+        <p>The electronics were committed to a <strong>single layer shield</strong> designed in Altium Designer that stacks straight onto an Arduino Uno. Every subsystem gets its own labelled header: the 5 V power sensor, the ultrasonic sensor, the RFID reader, the LCD, the Bluetooth module, the servo and the motor driver, plus an onboard push button with its 10 K pull down.</p>
+        <p>Silkscreening every net meant the harness could only be assembled one way, which removed an entire class of integration bug from the project.</p>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Two rails, one battery</h2>
+      <div class="chapter__body">
+        <p class="lede" style="max-width:46ch;color:var(--ink)">Motor noise was the failure mode, so the power system was designed around it.</p>
+        <ul class="speclist">
+          <li>One <strong>11.1 V LiPo</strong> feeds <strong>two buck converters</strong>, producing a <strong>5.1 V logic rail</strong> and a <strong>7.9 V motor rail</strong>.</li>
+          <li>Separating them keeps the commutation noise of the drive motors off the sensor and I<sup>2</sup>C bus.</li>
+          <li>That separation is what made the ultrasonic readings stable enough to trust as a safety input rather than a suggestion.</li>
+          </ul>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Sensing and actuation</h2>
+      <div class="chapter__body">
+        <p class="lede" style="max-width:46ch;color:var(--ink)">Five sensors and four actuator systems on one controller.</p>
+        <ul class="speclist">
+          <li><strong>HC-SR04 ultrasonic</strong> for obstacle range, stopping the vehicle inside a 20 cm threshold.</li>
+          <li><strong>RC522 RFID</strong> for access control, so the cargo compartment only opens to an authorized tag.</li>
+          <li><strong>HC-05 Bluetooth</strong> for commands and telemetry off the vehicle.</li>
+          <li><strong>DHT11</strong> for cabin temperature and humidity, which matters for anything temperature sensitive in transit.</li>
+          <li>A <strong>16 by 2 LCD</strong> for local status, two DC drive motors through an <strong>L298N</strong>, and a servo on the latch.</li>
+          </ul>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Validation</h2>
+      <div class="chapter__body">
+        <div class="callout"><span class="callout__label">Measured</span><p><strong>45 minutes</strong> of continuous runtime on one charge, <strong>100 percent</strong> of integration tests passed, and the obstacle stop verified below the <strong>20 cm</strong> threshold.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="band band--tight band--paper2">
+    <div class="shell">
+      <div class="section-head" style="padding-bottom:2rem">
+        <h2 class="reveal" style="font-size:var(--step-3)">Shield, schematic and harness</h2>
+        <p class="reveal">Select any image to open it full size.</p>
+      </div>
+      <div class="gallery reveal">
+        <button type="button" class="shot" data-full="../assets/img/shield-3d-lg.webp" data-caption="Shield render, every header labelled">
+          <img src="../assets/img/shield-3d-sm.webp" srcset="../assets/img/shield-3d-sm.webp 820w, ../assets/img/shield-3d-lg.webp 1595w" sizes="(min-width: 55em) 30vw, 92vw" alt="3D render of the single layer Arduino shield with labelled headers for the power sensor, motor driver, ultrasonic sensor, Bluetooth module, LCD and push button" width="1595" height="1048" loading="lazy" decoding="async">
+          <span class="shot__cap">Shield render, every header labelled</span>
+        </button>
+        <button type="button" class="shot shot--contain" data-full="../assets/img/shield-schematic-lg.webp" data-caption="Schematic sheet, Arduino pin map to subsystems">
+          <img src="../assets/img/shield-schematic-sm.webp" srcset="../assets/img/shield-schematic-sm.webp 820w, ../assets/img/shield-schematic-lg.webp 1551w" sizes="(min-width: 55em) 30vw, 92vw" alt="Altium schematic sheet showing the Arduino Uno pin headers on both sides with the ultrasonic sensor, RFID reader, temperature sensor, LCD, Bluetooth module, motor driver and push button wired between them" width="1551" height="1200" loading="lazy" decoding="async">
+          <span class="shot__cap">Schematic sheet, Arduino pin map to subsystems</span>
+        </button>
+        <button type="button" class="shot shot--contain" data-full="../assets/img/shield-wiring-lg.webp" data-caption="Full system wiring plan">
+          <img src="../assets/img/shield-wiring-sm.webp" srcset="../assets/img/shield-wiring-sm.webp 820w, ../assets/img/shield-wiring-lg.webp 1724w" sizes="(min-width: 55em) 30vw, 92vw" alt="Wiring diagram of the complete robot showing the LiPo battery, two buck converters, Arduino Uno, L298N motor driver, two DC motors, servo, LCD, RFID reader, Bluetooth module, ultrasonic and temperature sensors" width="1724" height="883" loading="lazy" decoding="async">
+          <span class="shot__cap">Full system wiring plan</span>
+        </button>
+        <button type="button" class="shot" data-full="../assets/img/delivery-robot-lg.webp" data-caption="Assembled vehicle">
+          <img src="../assets/img/delivery-robot-sm.webp" srcset="../assets/img/delivery-robot-sm.webp 820w, ../assets/img/delivery-robot-lg.webp 1200w" sizes="(min-width: 55em) 30vw, 92vw" alt="The assembled robot on a lab bench with the cargo box mounted" width="1200" height="1600" loading="lazy" decoding="async">
+          <span class="shot__cap">Assembled vehicle</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pager" aria-label="Project navigation">
+    <a href="rc-car.html">
+      <span class="pager__dir">Previous project</span>
+      <span class="pager__name">Wireless RC Car</span>
+    </a>
+    <a href="filament-spooler.html">
+      <span class="pager__dir">Next project</span>
+      <span class="pager__name">Filament Spooler</span>
+    </a>
+  </nav>
+
+  <section class="contact">
+    <div class="shell">
+      <h2 class="reveal">Let's build something.</h2>
+      <p class="contact__body reveal">
+        I am looking for engineering co-op and internship work in power electronics, hardware design,
+        embedded systems or test.
+      </p>
+      <div class="contact__rows reveal">
+        <a class="contact__row" href="mailto:as.alzm@outlook.com"><span>Email</span><span>as.alzm@outlook.com</span></a>
+        <a class="contact__row" href="tel:+15198725539"><span>Phone</span><span>+1 (519) 872 5539</span></a>
+        <a class="contact__row" href="https://www.linkedin.com/in/a-almazlom/" target="_blank" rel="noopener"><span>LinkedIn</span><span>linkedin.com/in/a-almazlom</span></a>
+        <a class="contact__row" href="../resume.html"><span>R&eacute;sum&eacute;</span><span>Full r&eacute;sum&eacute;, ready to print</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="shell footer__inner">
+    <p>Abdelrahman Almazlom &middot; London, Ontario</p>
+    <p><a href="../index.html">All work</a></p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

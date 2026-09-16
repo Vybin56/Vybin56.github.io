@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analog Function Generator and PCB | Abdelrahman Almazlom</title>
+<meta name="description" content="A TL082 op-amp signal generator simulated in Micro-Cap 12, then built as a hand soldered Altium board and verified on a scope.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Analog Function Generator and PCB | Abdelrahman Almazlom">
+<meta property="og:description" content="A TL082 op-amp signal generator simulated in Micro-Cap 12, then built as a hand soldered Altium board and verified on a scope.">
+<meta property="og:image" content="../assets/img/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%23E54723'/%3E%3Cpolygon%20points='32,11%2053,53%2042,53%2032,31%2022,53%2011,53'%20fill='%23150F0D'/%3E%3Crect%20x='23'%20y='38'%20width='18'%20height='7'%20fill='%23150F0D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Azeret+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.classList.add("has-js");</script>
+</head>
+
+<body>
+<a class="skip" href="#story">Skip to the write up</a>
+
+<header class="masthead masthead-project">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">
+      <span class="wordmark__mark" aria-hidden="true">AA</span>
+      <span>Abdelrahman Almazlom</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="../index.html#work">Work</a></li>
+        <li data-optional><a href="../index.html#experience">Experience</a></li>
+        <li data-optional><a href="../index.html#capability">Skills</a></li>
+        <li><a href="../resume.html">R&eacute;sum&eacute;</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="shell">
+    <p class="crumbs"><a href="../index.html#work">Work</a> <span aria-hidden="true">/</span> <span>Analog Function Generator</span></p>
+  </div>
+
+  <section class="proj-head">
+    <div class="shell">
+      <p class="proj-head__kicker rise">Analog electronics</p>
+      <h1 class="rise" style="--delay:80ms">Analog Function Generator and PCB</h1>
+      <p class="proj-head__lede rise" style="--delay:160ms">A multi stage op-amp signal generator taken from simulation to a hand soldered board, then measured on an oscilloscope to confirm the hardware matched the model.</p>
+      <dl class="datasheet rise" style="--delay:240ms">
+        <div><dt>Role</dt><dd>Simulation, schematic, layout, assembly, test</dd></div>
+        <div><dt>Simulator</dt><dd>Micro-Cap 12</dd></div>
+        <div><dt>Amplifiers</dt><dd>TL082</dd></div>
+        <div><dt>Outputs</dt><dd>Square, triangle, sine</dd></div>
+        <div><dt>Frequency</dt><dd>4.4 kHz</dd></div>
+        <div><dt>Amplitude</dt><dd>10 V</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="bleed">
+    <div class="shell">
+      <figure>
+        <div class="work__media--figure" style="max-width:52rem;margin-inline:auto;background:transparent;padding:0">
+        <svg viewBox="0 0 480 330" role="img" aria-label="Three stacked oscilloscope traces: a square wave, a triangle wave and a sine wave, all at 4.4 kilohertz">
+          <g fill="none" stroke="#E54723" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M30 78 L30 40 L90 40 L90 78 L90 116 L150 116 L150 78 L150 40 L210 40 L210 78 L210 116 L270 116 L270 78 L270 40 L330 40 L330 78 L330 116 L390 116 L390 78 L450 78"/>
+            <path d="M30 175 L60 137 L120 213 L180 137 L240 213 L300 137 L360 213 L420 137 L450 175"/>
+            <path d="M30 272 C 45 272 45 234 60 234 C 75 234 75 272 90 272 C 105 272 105 310 120 310 C 135 310 135 272 150 272 C 165 272 165 234 180 234 C 195 234 195 272 210 272 C 225 272 225 310 240 310 C 255 310 255 272 270 272 C 285 272 285 234 300 234 C 315 234 315 272 330 272 C 345 272 345 310 360 310 C 375 310 375 272 390 272 C 405 272 405 234 420 234 C 435 234 435 272 450 272"/>
+          </g>
+          <g stroke="#3B302C" stroke-width="1" stroke-dasharray="3 5">
+            <line x1="20" y1="78" x2="460" y2="78"/><line x1="20" y1="175" x2="460" y2="175"/><line x1="20" y1="272" x2="460" y2="272"/>
+          </g>
+          <g fill="#98908E" font-family="Azeret Mono, monospace" font-size="11" letter-spacing="1.6">
+            <text x="20" y="22">SQUARE</text><text x="20" y="119">TRIANGLE</text><text x="20" y="216">SINE</text>
+          </g>
+          <text x="460" y="22" fill="#E54723" font-family="Azeret Mono, monospace" font-size="11" letter-spacing="1.6" text-anchor="end">4.4 kHz / 10 V</text>
+        </svg>
+        </div>
+        <figcaption class="caption"><b>Three outputs from one core</b>Square, triangle and sine at 4.4 kHz and 10 V, the values the simulation predicted and the scope confirmed.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="shell article" id="story">
+    <section class="chapter reveal">
+      <h2>Topology</h2>
+      <div class="chapter__body">
+        <p class="lede" style="max-width:46ch;color:var(--ink)">Three waveforms out of one oscillator core.</p>
+        <ul class="speclist">
+          <li>An oscillator core built on <strong>TL082</strong> dual op-amps produces the square wave.</li>
+          <li>An <strong>integrator stage</strong> turns that square wave into a triangle.</li>
+          <li>Further shaping and amplification produce the sine output.</li>
+          <li>Chaining the stages means all three outputs stay locked to the same frequency by construction.</li>
+          </ul>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Simulate first</h2>
+      <div class="chapter__body">
+        <p>The whole chain was designed and simulated in <strong>Micro-Cap 12</strong> and tuned to <strong>4.4 kHz</strong> at a <strong>10 V</strong> output before any copper was ordered. Simulation is cheap; a board revision is not.</p>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Board and bring up</h2>
+      <div class="chapter__body">
+        <ul class="speclist">
+          <li>A custom PCB routed in <strong>Altium Designer</strong>.</li>
+          <li>Through hole components populated and <strong>hand soldered</strong>.</li>
+          <li>Outputs captured on an <strong>oscilloscope</strong> and compared against the simulated traces, which is the only step that proves the design rather than the model.</li>
+          </ul>
+        <div class="callout"><span class="callout__label">Result</span><p>Measured hardware matched the Micro-Cap simulation across all three outputs at the design frequency and amplitude.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <nav class="pager" aria-label="Project navigation">
+    <a href="filament-spooler.html">
+      <span class="pager__dir">Previous project</span>
+      <span class="pager__name">Filament Spooler</span>
+    </a>
+    <a href="fpga-sequence-detector.html">
+      <span class="pager__dir">Next project</span>
+      <span class="pager__name">FPGA Sequence Detector</span>
+    </a>
+  </nav>
+
+  <section class="contact">
+    <div class="shell">
+      <h2 class="reveal">Let's build something.</h2>
+      <p class="contact__body reveal">
+        I am looking for engineering co-op and internship work in power electronics, hardware design,
+        embedded systems or test.
+      </p>
+      <div class="contact__rows reveal">
+        <a class="contact__row" href="mailto:as.alzm@outlook.com"><span>Email</span><span>as.alzm@outlook.com</span></a>
+        <a class="contact__row" href="tel:+15198725539"><span>Phone</span><span>+1 (519) 872 5539</span></a>
+        <a class="contact__row" href="https://www.linkedin.com/in/a-almazlom/" target="_blank" rel="noopener"><span>LinkedIn</span><span>linkedin.com/in/a-almazlom</span></a>
+        <a class="contact__row" href="../resume.html"><span>R&eacute;sum&eacute;</span><span>Full r&eacute;sum&eacute;, ready to print</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="shell footer__inner">
+    <p>Abdelrahman Almazlom &middot; London, Ontario</p>
+    <p><a href="../index.html">All work</a></p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

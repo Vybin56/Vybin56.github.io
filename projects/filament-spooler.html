@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automated Filament Spooler and AI Recycling System | Abdelrahman Almazlom</title>
+<meta name="description" content="The 12 V power distribution and motor control for a closed loop filament recycling line.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Automated Filament Spooler and AI Recycling System | Abdelrahman Almazlom">
+<meta property="og:description" content="The 12 V power distribution and motor control for a closed loop filament recycling line.">
+<meta property="og:image" content="../assets/img/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%23E54723'/%3E%3Cpolygon%20points='32,11%2053,53%2042,53%2032,31%2022,53%2011,53'%20fill='%23150F0D'/%3E%3Crect%20x='23'%20y='38'%20width='18'%20height='7'%20fill='%23150F0D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Azeret+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.classList.add("has-js");</script>
+</head>
+
+<body>
+<a class="skip" href="#story">Skip to the write up</a>
+
+<header class="masthead masthead-project">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">
+      <span class="wordmark__mark" aria-hidden="true">AA</span>
+      <span>Abdelrahman Almazlom</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="../index.html#work">Work</a></li>
+        <li data-optional><a href="../index.html#experience">Experience</a></li>
+        <li data-optional><a href="../index.html#capability">Skills</a></li>
+        <li><a href="../resume.html">R&eacute;sum&eacute;</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="shell">
+    <p class="crumbs"><a href="../index.html#work">Work</a> <span aria-hidden="true">/</span> <span>Filament Spooler</span></p>
+  </div>
+
+  <section class="proj-head">
+    <div class="shell">
+      <p class="proj-head__kicker rise">Western University, team design project</p>
+      <h1 class="rise" style="--delay:80ms">Automated Filament Spooler and AI Recycling System</h1>
+      <p class="proj-head__lede rise" style="--delay:160ms">The electrical half of a closed loop plastic recycling line: it pulls extruded filament through a cooling section and winds it onto a spool at a matched speed, so the filament neither stretches nor piles up.</p>
+      <dl class="datasheet rise" style="--delay:240ms">
+        <div><dt>Role</dt><dd>Power distribution, motor control, current budget</dd></div>
+        <div><dt>System</dt><dd>12 V distribution network</dd></div>
+        <div><dt>Supply</dt><dd>10 A to 12 A</dd></div>
+        <div><dt>Motors</dt><dd>Three DC motors</dd></div>
+        <div><dt>Cooling</dt><dd>Dual fans</dd></div>
+        <div><dt>Control</dt><dd>Arduino with dual H bridge drivers</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="bleed">
+    <div class="shell-wide">
+      <figure>
+        <img src="../assets/img/spooler-drive-sm.webp" srcset="../assets/img/spooler-drive-sm.webp 750w, ../assets/img/spooler-drive-lg.webp 750w" sizes="(min-width: 92rem) 88rem, 94vw" alt="CAD render of the filament spooler drive train: dark red printed brackets and pulleys on machined shafts, a tensioning arm, a take up spool and three DC motors on mounting blocks" width="750" height="655" decoding="async">
+        <figcaption class="caption"><b>Drive train</b>The puller and the winder are separate motors, so their speeds can be trimmed against each other.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="shell article" id="story">
+    <section class="chapter reveal">
+      <h2>The line</h2>
+      <div class="chapter__body">
+        <p>Recycled plastic is extruded into filament, cooled, and wound onto a spool. Two motions have to stay in agreement: the puller that draws filament out of the extruder, and the winder that takes it up.</p>
+        <p>If the winder runs fast the filament thins and snaps. If it runs slow the filament piles up before the spool. Everything electrical on this project exists to keep those two speeds in a usable ratio.</p>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Power distribution</h2>
+      <div class="chapter__body">
+        <ul class="speclist">
+          <li>A <strong>12 V distribution network</strong> off a <strong>10 A to 12 A</strong> supply, feeding three DC motors, dual cooling fans and the Arduino.</li>
+          <li>Current demand was calculated per branch before anything was wired, so the supply was sized to the load rather than the load discovered afterwards.</li>
+          <li>Fans sit on the filament path between the extruder and the puller, so the plastic is set before it is under tension.</li>
+          </ul>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Motor control</h2>
+      <div class="chapter__body">
+        <p><strong>Dual H bridge drivers</strong> control the pulling and winding motors, both commanded from the central Arduino. Driving them independently is what makes the ratio between them adjustable rather than fixed by gearing.</p>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Mechanical integration</h2>
+      <div class="chapter__body">
+        <p>Printed brackets, pulleys and shafts carry the spool and the tensioning arm, with the cooling fan mounted on its own frame over the filament path. Interfacing the motor control to that mechanism, sizing the current it draws, and wiring it safely was my half of the project.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="band band--tight band--paper2">
+    <div class="shell">
+      <div class="section-head" style="padding-bottom:2rem">
+        <h2 class="reveal" style="font-size:var(--step-3)">Mechanism</h2>
+        <p class="reveal">Select any image to open it full size.</p>
+      </div>
+      <div class="gallery reveal">
+        <button type="button" class="shot shot--contain" data-full="../assets/img/spooler-drive-lg.webp" data-caption="Drive train and take up spool">
+          <img src="../assets/img/spooler-drive-sm.webp" srcset="../assets/img/spooler-drive-sm.webp 750w, ../assets/img/spooler-drive-lg.webp 750w" sizes="(min-width: 55em) 30vw, 92vw" alt="CAD render of the drive train with pulleys, shafts, a tensioning arm and three DC motors" width="750" height="655" loading="lazy" decoding="async">
+          <span class="shot__cap">Drive train and take up spool</span>
+        </button>
+        <button type="button" class="shot shot--contain" data-full="../assets/img/spooler-frame-lg.webp" data-caption="Cooling section over the filament path">
+          <img src="../assets/img/spooler-frame-sm.webp" srcset="../assets/img/spooler-frame-sm.webp 750w, ../assets/img/spooler-frame-lg.webp 750w" sizes="(min-width: 55em) 30vw, 92vw" alt="CAD render of the cooling section: two printed stands carrying a rail with a fan mounted over the filament path and two guide frames" width="750" height="564" loading="lazy" decoding="async">
+          <span class="shot__cap">Cooling section over the filament path</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pager" aria-label="Project navigation">
+    <a href="hospital-delivery-robot.html">
+      <span class="pager__dir">Previous project</span>
+      <span class="pager__name">Hospital Delivery Robot</span>
+    </a>
+    <a href="function-generator.html">
+      <span class="pager__dir">Next project</span>
+      <span class="pager__name">Analog Function Generator</span>
+    </a>
+  </nav>
+
+  <section class="contact">
+    <div class="shell">
+      <h2 class="reveal">Let's build something.</h2>
+      <p class="contact__body reveal">
+        I am looking for engineering co-op and internship work in power electronics, hardware design,
+        embedded systems or test.
+      </p>
+      <div class="contact__rows reveal">
+        <a class="contact__row" href="mailto:as.alzm@outlook.com"><span>Email</span><span>as.alzm@outlook.com</span></a>
+        <a class="contact__row" href="tel:+15198725539"><span>Phone</span><span>+1 (519) 872 5539</span></a>
+        <a class="contact__row" href="https://www.linkedin.com/in/a-almazlom/" target="_blank" rel="noopener"><span>LinkedIn</span><span>linkedin.com/in/a-almazlom</span></a>
+        <a class="contact__row" href="../resume.html"><span>R&eacute;sum&eacute;</span><span>Full r&eacute;sum&eacute;, ready to print</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="shell footer__inner">
+    <p>Abdelrahman Almazlom &middot; London, Ontario</p>
+    <p><a href="../index.html">All work</a></p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

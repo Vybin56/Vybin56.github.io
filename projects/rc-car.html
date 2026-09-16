@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireless RC Car and Electronic Steering Differential | Abdelrahman Almazlom</title>
+<meta name="description" content="A 3D printed RC platform with independently driven rear wheels and firmware that trims wheel speed through a corner.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wireless RC Car and Electronic Steering Differential | Abdelrahman Almazlom">
+<meta property="og:description" content="A 3D printed RC platform with independently driven rear wheels and firmware that trims wheel speed through a corner.">
+<meta property="og:image" content="../assets/img/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%23E54723'/%3E%3Cpolygon%20points='32,11%2053,53%2042,53%2032,31%2022,53%2011,53'%20fill='%23150F0D'/%3E%3Crect%20x='23'%20y='38'%20width='18'%20height='7'%20fill='%23150F0D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Azeret+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.classList.add("has-js");</script>
+</head>
+
+<body>
+<a class="skip" href="#story">Skip to the write up</a>
+
+<header class="masthead masthead-project">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../index.html">
+      <span class="wordmark__mark" aria-hidden="true">AA</span>
+      <span>Abdelrahman Almazlom</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="../index.html#work">Work</a></li>
+        <li data-optional><a href="../index.html#experience">Experience</a></li>
+        <li data-optional><a href="../index.html#capability">Skills</a></li>
+        <li><a href="../resume.html">R&eacute;sum&eacute;</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="shell">
+    <p class="crumbs"><a href="../index.html#work">Work</a> <span aria-hidden="true">/</span> <span>Wireless RC Car</span></p>
+  </div>
+
+  <section class="proj-head">
+    <div class="shell">
+      <p class="proj-head__kicker rise">Western Engineering AutoPilot</p>
+      <h1 class="rise" style="--delay:80ms">Wireless RC Car and Electronic Steering Differential</h1>
+      <p class="proj-head__lede rise" style="--delay:160ms">A ground up RC platform built to test drive control ideas: a printed chassis, two independently driven rear wheels, and a differential algorithm that trims wheel speed through a corner instead of fighting it.</p>
+      <dl class="datasheet rise" style="--delay:240ms">
+        <div><dt>Role</dt><dd>Firmware, power and motor hardware, chassis CAD</dd></div>
+        <div><dt>Team</dt><dd>Western Engineering AutoPilot build team</dd></div>
+        <div><dt>Control</dt><dd>PS5 controller into a Python interface</dd></div>
+        <div><dt>Compute</dt><dd>Arduino, embedded C++</dd></div>
+        <div><dt>Drive</dt><dd>Two DC motors, L298N, steering servo</dd></div>
+        <div><dt>Power</dt><dd>11.1 V 3S LiPo, dual buck converters</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="bleed">
+    <div class="shell-wide">
+      <figure>
+        <img src="../assets/img/rc-rear-quarter-sm.webp" srcset="../assets/img/rc-rear-quarter-sm.webp 820w, ../assets/img/rc-rear-quarter-lg.webp 1600w" sizes="(min-width: 92rem) 88rem, 94vw" alt="The finished RC car on a lab floor: a black 3D printed upper deck over a white lower chassis, a rear wing, racing slicks on red rimmed wheels and a battery pack strapped to the deck" width="1600" height="1200" decoding="async">
+        <figcaption class="caption"><b>Finished platform</b>Everything above the wheels and drivetrain was designed and printed for this car.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="shell article" id="story">
+    <section class="chapter reveal">
+      <h2>Why a differential</h2>
+      <div class="chapter__body">
+        <p>A fixed rear axle forces both wheels to turn at the same speed. In a corner the inside wheel travels a shorter arc than the outside one, so one of the two has to slip. On a light RC chassis that slip shows up as understeer and lost traction on corner exit.</p>
+        <p>The electronic differential removes the constraint. Each rear wheel gets its own motor, and the firmware computes a speed offset from the steering input so the two wheels turn at the speeds the geometry is actually asking for.</p>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Control path</h2>
+      <div class="chapter__body">
+        <p class="lede" style="max-width:46ch;color:var(--ink)">From thumbstick to PWM in as few steps as possible.</p>
+        <ul class="speclist">
+          <li>A <strong>PS5 controller</strong> pairs to a <strong>Python interface</strong> that translates stick positions into throttle and steering commands.</li>
+          <li>Commands stream wirelessly to <strong>embedded C++ firmware</strong> on the Arduino, which owns PWM timing and the differential calculation.</li>
+          <li>The loop was kept deliberately short so the car responds without the lag that makes a remote vehicle undriveable.</li>
+          </ul>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Power and motor hardware</h2>
+      <div class="chapter__body">
+        <ul class="speclist">
+          <li>An <strong>11.1 V 3S LiPo</strong> is the single source for the whole car.</li>
+          <li><strong>Dual buck converters</strong> step it down into separate supplies so logic and actuators do not share a rail.</li>
+          <li>An <strong>L298N dual H bridge</strong> drives both rear motors, with direction and PWM on separate pins so each side can be commanded independently.</li>
+          <li>The steering servo runs off its own supply, so its stall current cannot brown out the microcontroller mid corner.</li>
+          </ul>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Chassis</h2>
+      <div class="chapter__body">
+        <p>The chassis was designed in CAD and 3D printed, with modular mounting enclosures for the dual DC drive motors, the steering servo and the control electronics. Printing it meant the mounting geometry could be revised between test sessions instead of being worked around.</p>
+      </div>
+    </section>
+    <section class="chapter reveal">
+      <h2>Demonstration</h2>
+      <div class="chapter__body">
+        <p>The car was shown in a live technical demonstration to club leadership and project leads, which validated control responsiveness, chassis integrity and firmware stability under real driving rather than on a bench.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="band band--tight band--paper2">
+    <div class="shell">
+      <div class="section-head" style="padding-bottom:2rem">
+        <h2 class="reveal" style="font-size:var(--step-3)">Build and wiring</h2>
+        <p class="reveal">Select any image to open it full size.</p>
+      </div>
+      <div class="gallery reveal">
+        <button type="button" class="shot" data-full="../assets/img/rc-side-lg.webp" data-caption="Side profile, printed deck over the drivetrain">
+          <img src="../assets/img/rc-side-sm.webp" srcset="../assets/img/rc-side-sm.webp 820w, ../assets/img/rc-side-lg.webp 1600w" sizes="(min-width: 55em) 30vw, 92vw" alt="Low angle side profile of the RC car showing the printed deck, suspension arms and rear wing" width="1600" height="1200" loading="lazy" decoding="async">
+          <span class="shot__cap">Side profile, printed deck over the drivetrain</span>
+        </button>
+        <button type="button" class="shot" data-full="../assets/img/rc-front-quarter-lg.webp" data-caption="Front three quarter">
+          <img src="../assets/img/rc-front-quarter-sm.webp" srcset="../assets/img/rc-front-quarter-sm.webp 820w, ../assets/img/rc-front-quarter-lg.webp 1600w" sizes="(min-width: 55em) 30vw, 92vw" alt="Front three quarter view of the RC car on carpet in front of a window" width="1600" height="1200" loading="lazy" decoding="async">
+          <span class="shot__cap">Front three quarter</span>
+        </button>
+        <button type="button" class="shot" data-full="../assets/img/rc-front-lg.webp" data-caption="Head on, front wing and steering">
+          <img src="../assets/img/rc-front-sm.webp" srcset="../assets/img/rc-front-sm.webp 820w, ../assets/img/rc-front-lg.webp 1200w" sizes="(min-width: 55em) 30vw, 92vw" alt="Head on view of the RC car showing the front wing and steering geometry" width="1200" height="1600" loading="lazy" decoding="async">
+          <span class="shot__cap">Head on, front wing and steering</span>
+        </button>
+        <button type="button" class="shot" data-full="../assets/img/rc-front-low-lg.webp" data-caption="Ground level, battery on the deck">
+          <img src="../assets/img/rc-front-low-sm.webp" srcset="../assets/img/rc-front-low-sm.webp 820w, ../assets/img/rc-front-low-lg.webp 1200w" sizes="(min-width: 55em) 30vw, 92vw" alt="Ground level view of the RC car with the battery pack visible on the deck" width="1200" height="1600" loading="lazy" decoding="async">
+          <span class="shot__cap">Ground level, battery on the deck</span>
+        </button>
+        <button type="button" class="shot" data-full="../assets/img/rc-electronics-lg.webp" data-caption="Electronics bay: Arduino, buck converters, L298N, Bluetooth">
+          <img src="../assets/img/rc-electronics-sm.webp" srcset="../assets/img/rc-electronics-sm.webp 820w, ../assets/img/rc-electronics-lg.webp 1200w" sizes="(min-width: 55em) 30vw, 92vw" alt="Top down view of the car with the upper deck removed, showing the Arduino, buck converter, motor driver, Bluetooth module and wiring harness" width="1200" height="1600" loading="lazy" decoding="async">
+          <span class="shot__cap">Electronics bay: Arduino, buck converters, L298N, Bluetooth</span>
+        </button>
+        <button type="button" class="shot shot--contain" data-full="../assets/img/rc-wiring-lg.webp" data-caption="Wiring plan drawn before the harness was built">
+          <img src="../assets/img/rc-wiring-sm.webp" srcset="../assets/img/rc-wiring-sm.webp 820w, ../assets/img/rc-wiring-lg.webp 1286w" sizes="(min-width: 55em) 30vw, 92vw" alt="Wiring diagram showing the LiPo battery feeding a power switch, two buck converters, the L298N motor driver, two DC motors, the Arduino, a steering servo and a Bluetooth module" width="1286" height="902" loading="lazy" decoding="async">
+          <span class="shot__cap">Wiring plan drawn before the harness was built</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pager" aria-label="Project navigation">
+    <a href="golf-cart-pdb.html">
+      <span class="pager__dir">Previous project</span>
+      <span class="pager__name">Golf Cart Power Distribution Board</span>
+    </a>
+    <a href="hospital-delivery-robot.html">
+      <span class="pager__dir">Next project</span>
+      <span class="pager__name">Hospital Delivery Robot</span>
+    </a>
+  </nav>
+
+  <section class="contact">
+    <div class="shell">
+      <h2 class="reveal">Let's build something.</h2>
+      <p class="contact__body reveal">
+        I am looking for engineering co-op and internship work in power electronics, hardware design,
+        embedded systems or test.
+      </p>
+      <div class="contact__rows reveal">
+        <a class="contact__row" href="mailto:as.alzm@outlook.com"><span>Email</span><span>as.alzm@outlook.com</span></a>
+        <a class="contact__row" href="tel:+15198725539"><span>Phone</span><span>+1 (519) 872 5539</span></a>
+        <a class="contact__row" href="https://www.linkedin.com/in/a-almazlom/" target="_blank" rel="noopener"><span>LinkedIn</span><span>linkedin.com/in/a-almazlom</span></a>
+        <a class="contact__row" href="../resume.html"><span>R&eacute;sum&eacute;</span><span>Full r&eacute;sum&eacute;, ready to print</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="shell footer__inner">
+    <p>Abdelrahman Almazlom &middot; London, Ontario</p>
+    <p><a href="../index.html">All work</a></p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
