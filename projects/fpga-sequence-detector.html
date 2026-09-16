@@ -47,14 +47,14 @@
     <div class="shell">
       <p class="proj-head__kicker rise">Digital logic</p>
       <h1 class="rise" style="--delay:80ms">FPGA Sequence Detector and Logic Optimization</h1>
-      <p class="proj-head__lede rise" style="--delay:160ms">An 8 state Moore machine that detects a 4 bit pattern inside a serial stream, then a second pass that made the same behaviour measurably cheaper in hardware.</p>
+      <p class="proj-head__lede rise" style="--delay:160ms">An 8 state Moore machine that finds a 4 bit pattern inside a serial stream, then a pass that made it cheaper in hardware.</p>
       <dl class="datasheet rise" style="--delay:240ms">
-        <div><dt>Role</dt><dd>FSM design, state encoding, optimization, simulation</dd></div>
+        <div><dt>Role</dt><dd>FSM design, encoding, optimization, simulation</dd></div>
         <div><dt>Tool</dt><dd>Quartus Prime</dd></div>
         <div><dt>Elements</dt><dd>D flip-flops</dd></div>
         <div><dt>States</dt><dd>8, Moore</dd></div>
         <div><dt>Encoding</dt><dd>Custom Gray code</dd></div>
-        <div><dt>Gate input cost</dt><dd>83 down to 63, a 24 percent reduction</dd></div>
+        <div><dt>Gate input cost</dt><dd>83 down to 63, a 24 percent cut</dd></div>
       </dl>
     </div>
   </section>
@@ -92,8 +92,8 @@
     <section class="chapter reveal">
       <h2>The machine</h2>
       <div class="chapter__body">
-        <p>A <strong>Moore</strong> finite state machine with <strong>8 states</strong>, implemented with <strong>D flip-flops</strong>, detecting a specific 4 bit binary sequence anywhere inside a continuous stream.</p>
-        <p>Detecting inside a stream is what makes the state graph interesting. On a partial match that then breaks, the machine cannot simply restart from the initial state: it has to fall back to whichever state correctly represents the suffix it has already seen.</p>
+        <p>A <strong>Moore</strong> machine with <strong>8 states</strong>, built from <strong>D flip-flops</strong>, detecting a 4 bit sequence anywhere inside a continuous stream.</p>
+        <p>Detecting inside a stream is what makes the state graph interesting: on a partial match that then breaks, the machine falls back to the state representing the suffix it has already seen, not to zero.</p>
       </div>
     </section>
     <section class="chapter reveal">
@@ -101,16 +101,16 @@
       <div class="chapter__body">
         <p class="lede" style="max-width:46ch;color:var(--ink)">Same behaviour, less hardware.</p>
         <ul class="speclist">
-          <li>A custom <strong>Gray code</strong> state assignment means only one state bit changes per transition, which reduces the number of terms each next state equation has to cover.</li>
-          <li><strong>Karnaugh map</strong> simplification on the resulting equations cut total gate input cost from <strong>83 to 63</strong>.</li>
-          <li>That is a <strong>24 percent</strong> reduction in circuit complexity with no change in what the machine does.</li>
+          <li>A custom <strong>Gray code</strong> assignment changes only one state bit per transition, cutting the terms each next state equation has to cover.</li>
+          <li><strong>Karnaugh map</strong> simplification took total gate input cost from <strong>83 to 63</strong>.</li>
+          <li>A <strong>24 percent</strong> reduction with no change in what the machine does.</li>
           </ul>
       </div>
     </section>
     <section class="chapter reveal">
       <h2>Verification</h2>
       <div class="chapter__body">
-        <p>Timing and state transitions were checked in functional simulation in <strong>Quartus Prime</strong>, walking the machine through partial matches, broken matches and back to back detections rather than only the happy path.</p>
+        <p>Timing and state transitions checked in <strong>Quartus Prime</strong> simulation, walking partial matches, broken matches and back to back detections rather than only the happy path.</p>
       </div>
     </section>
   </div>
@@ -130,7 +130,7 @@
     <div class="shell">
       <h2 class="reveal">Let's build something.</h2>
       <p class="contact__body reveal">
-        I am looking for engineering co-op and internship work in power electronics, hardware design,
+        Looking for engineering co-op and internship work in power electronics, hardware design,
         embedded systems or test.
       </p>
       <div class="contact__rows reveal">

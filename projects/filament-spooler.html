@@ -47,7 +47,7 @@
     <div class="shell">
       <p class="proj-head__kicker rise">Western University, team design project</p>
       <h1 class="rise" style="--delay:80ms">Automated Filament Spooler and AI Recycling System</h1>
-      <p class="proj-head__lede rise" style="--delay:160ms">The electrical half of a closed loop plastic recycling line: it pulls extruded filament through a cooling section and winds it onto a spool at a matched speed, so the filament neither stretches nor piles up.</p>
+      <p class="proj-head__lede rise" style="--delay:160ms">The electrical half of a closed loop recycling line: it pulls extruded filament through a cooling section and winds it onto a spool at a matched speed.</p>
       <dl class="datasheet rise" style="--delay:240ms">
         <div><dt>Role</dt><dd>Power distribution, motor control, current budget</dd></div>
         <div><dt>System</dt><dd>12 V distribution network</dd></div>
@@ -72,30 +72,30 @@
     <section class="chapter reveal">
       <h2>The line</h2>
       <div class="chapter__body">
-        <p>Recycled plastic is extruded into filament, cooled, and wound onto a spool. Two motions have to stay in agreement: the puller that draws filament out of the extruder, and the winder that takes it up.</p>
-        <p>If the winder runs fast the filament thins and snaps. If it runs slow the filament piles up before the spool. Everything electrical on this project exists to keep those two speeds in a usable ratio.</p>
+        <p>Recycled plastic is extruded into filament, cooled, and wound onto a spool. Two motions have to agree: the puller drawing filament out of the extruder, and the winder taking it up.</p>
+        <p>If the winder runs fast the filament thins and snaps. If it runs slow the filament piles up. Everything electrical here exists to hold those two speeds in a usable ratio.</p>
       </div>
     </section>
     <section class="chapter reveal">
       <h2>Power distribution</h2>
       <div class="chapter__body">
         <ul class="speclist">
-          <li>A <strong>12 V distribution network</strong> off a <strong>10 A to 12 A</strong> supply, feeding three DC motors, dual cooling fans and the Arduino.</li>
-          <li>Current demand was calculated per branch before anything was wired, so the supply was sized to the load rather than the load discovered afterwards.</li>
-          <li>Fans sit on the filament path between the extruder and the puller, so the plastic is set before it is under tension.</li>
+          <li>A <strong>12 V network</strong> off a <strong>10 A to 12 A</strong> supply feeding three DC motors, dual cooling fans and the Arduino.</li>
+          <li>Current demand was calculated per branch before wiring, so the supply was sized to the load rather than discovered afterwards.</li>
+          <li>Fans sit between the extruder and the puller, so the plastic is set before it is under tension.</li>
           </ul>
       </div>
     </section>
     <section class="chapter reveal">
       <h2>Motor control</h2>
       <div class="chapter__body">
-        <p><strong>Dual H bridge drivers</strong> control the pulling and winding motors, both commanded from the central Arduino. Driving them independently is what makes the ratio between them adjustable rather than fixed by gearing.</p>
+        <p><strong>Dual H bridge drivers</strong> control the pulling and winding motors, both commanded from the Arduino. Driving them independently is what makes the ratio adjustable rather than fixed by gearing.</p>
       </div>
     </section>
     <section class="chapter reveal">
       <h2>Mechanical integration</h2>
       <div class="chapter__body">
-        <p>Printed brackets, pulleys and shafts carry the spool and the tensioning arm, with the cooling fan mounted on its own frame over the filament path. Interfacing the motor control to that mechanism, sizing the current it draws, and wiring it safely was my half of the project.</p>
+        <p>Printed brackets, pulleys and shafts carry the spool and the tensioning arm, with the cooling fan on its own frame over the filament path. Interfacing motor control to that mechanism, sizing its current and wiring it safely was my half of the project.</p>
       </div>
     </section>
   </div>
@@ -134,7 +134,7 @@
     <div class="shell">
       <h2 class="reveal">Let's build something.</h2>
       <p class="contact__body reveal">
-        I am looking for engineering co-op and internship work in power electronics, hardware design,
+        Looking for engineering co-op and internship work in power electronics, hardware design,
         embedded systems or test.
       </p>
       <div class="contact__rows reveal">

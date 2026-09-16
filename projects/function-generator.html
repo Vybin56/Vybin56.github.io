@@ -47,7 +47,7 @@
     <div class="shell">
       <p class="proj-head__kicker rise">Analog electronics</p>
       <h1 class="rise" style="--delay:80ms">Analog Function Generator and PCB</h1>
-      <p class="proj-head__lede rise" style="--delay:160ms">A multi stage op-amp signal generator taken from simulation to a hand soldered board, then measured on an oscilloscope to confirm the hardware matched the model.</p>
+      <p class="proj-head__lede rise" style="--delay:160ms">A multi stage op-amp generator taken from simulation to a hand soldered board, then measured against the model.</p>
       <dl class="datasheet rise" style="--delay:240ms">
         <div><dt>Role</dt><dd>Simulation, schematic, layout, assembly, test</dd></div>
         <div><dt>Simulator</dt><dd>Micro-Cap 12</dd></div>
@@ -89,17 +89,17 @@
       <div class="chapter__body">
         <p class="lede" style="max-width:46ch;color:var(--ink)">Three waveforms out of one oscillator core.</p>
         <ul class="speclist">
-          <li>An oscillator core built on <strong>TL082</strong> dual op-amps produces the square wave.</li>
-          <li>An <strong>integrator stage</strong> turns that square wave into a triangle.</li>
-          <li>Further shaping and amplification produce the sine output.</li>
-          <li>Chaining the stages means all three outputs stay locked to the same frequency by construction.</li>
+          <li>A <strong>TL082</strong> oscillator core produces the square wave.</li>
+          <li>An <strong>integrator stage</strong> turns it into a triangle.</li>
+          <li>Further shaping and amplification produce the sine.</li>
+          <li>Chaining the stages locks all three outputs to the same frequency by construction.</li>
           </ul>
       </div>
     </section>
     <section class="chapter reveal">
       <h2>Simulate first</h2>
       <div class="chapter__body">
-        <p>The whole chain was designed and simulated in <strong>Micro-Cap 12</strong> and tuned to <strong>4.4 kHz</strong> at a <strong>10 V</strong> output before any copper was ordered. Simulation is cheap; a board revision is not.</p>
+        <p>Designed and tuned in <strong>Micro-Cap 12</strong> to <strong>4.4 kHz</strong> at <strong>10 V</strong> before any copper was ordered. Simulation is cheap; a board revision is not.</p>
       </div>
     </section>
     <section class="chapter reveal">
@@ -108,9 +108,9 @@
         <ul class="speclist">
           <li>A custom PCB routed in <strong>Altium Designer</strong>.</li>
           <li>Through hole components populated and <strong>hand soldered</strong>.</li>
-          <li>Outputs captured on an <strong>oscilloscope</strong> and compared against the simulated traces, which is the only step that proves the design rather than the model.</li>
+          <li>Outputs captured on an <strong>oscilloscope</strong> and compared against the simulated traces, the only step that proves the design rather than the model.</li>
           </ul>
-        <div class="callout"><span class="callout__label">Result</span><p>Measured hardware matched the Micro-Cap simulation across all three outputs at the design frequency and amplitude.</p></div>
+        <div class="callout"><span class="callout__label">Result</span><p>Measured hardware matched the simulation across all three outputs at the design frequency and amplitude.</p></div>
       </div>
     </section>
   </div>
@@ -130,7 +130,7 @@
     <div class="shell">
       <h2 class="reveal">Let's build something.</h2>
       <p class="contact__body reveal">
-        I am looking for engineering co-op and internship work in power electronics, hardware design,
+        Looking for engineering co-op and internship work in power electronics, hardware design,
         embedded systems or test.
       </p>
       <div class="contact__rows reveal">

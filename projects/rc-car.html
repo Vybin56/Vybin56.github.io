@@ -47,10 +47,10 @@
     <div class="shell">
       <p class="proj-head__kicker rise">Western Engineering AutoPilot</p>
       <h1 class="rise" style="--delay:80ms">Wireless RC Car and Electronic Steering Differential</h1>
-      <p class="proj-head__lede rise" style="--delay:160ms">A ground up RC platform built to test drive control ideas: a printed chassis, two independently driven rear wheels, and a differential algorithm that trims wheel speed through a corner instead of fighting it.</p>
+      <p class="proj-head__lede rise" style="--delay:160ms">A printed chassis with independently driven rear wheels and firmware that trims wheel speed through a corner instead of fighting it.</p>
       <dl class="datasheet rise" style="--delay:240ms">
-        <div><dt>Role</dt><dd>Firmware, power and motor hardware, chassis CAD</dd></div>
-        <div><dt>Team</dt><dd>Western Engineering AutoPilot build team</dd></div>
+        <div><dt>Role</dt><dd>Firmware, power hardware, chassis CAD</dd></div>
+        <div><dt>Team</dt><dd>Western Engineering AutoPilot</dd></div>
         <div><dt>Control</dt><dd>PS5 controller into a Python interface</dd></div>
         <div><dt>Compute</dt><dd>Arduino, embedded C++</dd></div>
         <div><dt>Drive</dt><dd>Two DC motors, L298N, steering servo</dd></div>
@@ -72,18 +72,18 @@
     <section class="chapter reveal">
       <h2>Why a differential</h2>
       <div class="chapter__body">
-        <p>A fixed rear axle forces both wheels to turn at the same speed. In a corner the inside wheel travels a shorter arc than the outside one, so one of the two has to slip. On a light RC chassis that slip shows up as understeer and lost traction on corner exit.</p>
-        <p>The electronic differential removes the constraint. Each rear wheel gets its own motor, and the firmware computes a speed offset from the steering input so the two wheels turn at the speeds the geometry is actually asking for.</p>
+        <p>A fixed rear axle forces both wheels to the same speed. In a corner the inside wheel travels a shorter arc, so one of them has to slip. On a light chassis that shows up as understeer and lost traction on corner exit.</p>
+        <p>Here each rear wheel gets its own motor, and the firmware computes a speed offset from the steering input, so the wheels turn at the speeds the geometry is actually asking for.</p>
       </div>
     </section>
     <section class="chapter reveal">
       <h2>Control path</h2>
       <div class="chapter__body">
-        <p class="lede" style="max-width:46ch;color:var(--ink)">From thumbstick to PWM in as few steps as possible.</p>
+        <p class="lede" style="max-width:46ch;color:var(--ink)">Thumbstick to PWM in as few steps as possible.</p>
         <ul class="speclist">
-          <li>A <strong>PS5 controller</strong> pairs to a <strong>Python interface</strong> that translates stick positions into throttle and steering commands.</li>
-          <li>Commands stream wirelessly to <strong>embedded C++ firmware</strong> on the Arduino, which owns PWM timing and the differential calculation.</li>
-          <li>The loop was kept deliberately short so the car responds without the lag that makes a remote vehicle undriveable.</li>
+          <li>A <strong>PS5 controller</strong> pairs to a <strong>Python interface</strong> that turns stick positions into throttle and steering commands.</li>
+          <li>Commands stream to <strong>embedded C++</strong> firmware on the Arduino, which owns PWM timing and the differential math.</li>
+          <li>The loop is short enough that the car responds without the lag that makes a remote vehicle undriveable.</li>
           </ul>
       </div>
     </section>
@@ -92,22 +92,22 @@
       <div class="chapter__body">
         <ul class="speclist">
           <li>An <strong>11.1 V 3S LiPo</strong> is the single source for the whole car.</li>
-          <li><strong>Dual buck converters</strong> step it down into separate supplies so logic and actuators do not share a rail.</li>
-          <li>An <strong>L298N dual H bridge</strong> drives both rear motors, with direction and PWM on separate pins so each side can be commanded independently.</li>
-          <li>The steering servo runs off its own supply, so its stall current cannot brown out the microcontroller mid corner.</li>
+          <li><strong>Dual buck converters</strong> split it so logic and actuators never share a rail.</li>
+          <li>An <strong>L298N dual H bridge</strong> drives both rear motors, direction and PWM on separate pins.</li>
+          <li>The steering servo runs off its own supply, so stall current cannot brown out the microcontroller mid corner.</li>
           </ul>
       </div>
     </section>
     <section class="chapter reveal">
       <h2>Chassis</h2>
       <div class="chapter__body">
-        <p>The chassis was designed in CAD and 3D printed, with modular mounting enclosures for the dual DC drive motors, the steering servo and the control electronics. Printing it meant the mounting geometry could be revised between test sessions instead of being worked around.</p>
+        <p>Designed in CAD and 3D printed, with modular mounts for the drive motors, steering servo and electronics. Printing it meant mounting geometry could be revised between test sessions instead of worked around.</p>
       </div>
     </section>
     <section class="chapter reveal">
       <h2>Demonstration</h2>
       <div class="chapter__body">
-        <p>The car was shown in a live technical demonstration to club leadership and project leads, which validated control responsiveness, chassis integrity and firmware stability under real driving rather than on a bench.</p>
+        <p>Shown in a live technical demonstration to club leadership and project leads, which validated control responsiveness, chassis integrity and firmware stability under real driving rather than on a bench.</p>
       </div>
     </section>
   </div>
@@ -135,13 +135,13 @@
           <img src="../assets/img/rc-front-low-sm.webp" srcset="../assets/img/rc-front-low-sm.webp 820w, ../assets/img/rc-front-low-lg.webp 1200w" sizes="(min-width: 55em) 30vw, 92vw" alt="Ground level view of the RC car with the battery pack visible on the deck" width="1200" height="1600" loading="lazy" decoding="async">
           <span class="shot__cap">Ground level, battery on the deck</span>
         </button>
-        <button type="button" class="shot" data-full="../assets/img/rc-electronics-lg.webp" data-caption="Electronics bay: Arduino, buck converters, L298N, Bluetooth">
+        <button type="button" class="shot" data-full="../assets/img/rc-electronics-lg.webp" data-caption="Electronics bay: Arduino, bucks, L298N, Bluetooth">
           <img src="../assets/img/rc-electronics-sm.webp" srcset="../assets/img/rc-electronics-sm.webp 820w, ../assets/img/rc-electronics-lg.webp 1200w" sizes="(min-width: 55em) 30vw, 92vw" alt="Top down view of the car with the upper deck removed, showing the Arduino, buck converter, motor driver, Bluetooth module and wiring harness" width="1200" height="1600" loading="lazy" decoding="async">
-          <span class="shot__cap">Electronics bay: Arduino, buck converters, L298N, Bluetooth</span>
+          <span class="shot__cap">Electronics bay: Arduino, bucks, L298N, Bluetooth</span>
         </button>
-        <button type="button" class="shot shot--contain" data-full="../assets/img/rc-wiring-lg.webp" data-caption="Wiring plan drawn before the harness was built">
+        <button type="button" class="shot shot--contain" data-full="../assets/img/rc-wiring-lg.webp" data-caption="Wiring plan, drawn before the harness was built">
           <img src="../assets/img/rc-wiring-sm.webp" srcset="../assets/img/rc-wiring-sm.webp 820w, ../assets/img/rc-wiring-lg.webp 1286w" sizes="(min-width: 55em) 30vw, 92vw" alt="Wiring diagram showing the LiPo battery feeding a power switch, two buck converters, the L298N motor driver, two DC motors, the Arduino, a steering servo and a Bluetooth module" width="1286" height="902" loading="lazy" decoding="async">
-          <span class="shot__cap">Wiring plan drawn before the harness was built</span>
+          <span class="shot__cap">Wiring plan, drawn before the harness was built</span>
         </button>
       </div>
     </div>
@@ -162,7 +162,7 @@
     <div class="shell">
       <h2 class="reveal">Let's build something.</h2>
       <p class="contact__body reveal">
-        I am looking for engineering co-op and internship work in power electronics, hardware design,
+        Looking for engineering co-op and internship work in power electronics, hardware design,
         embedded systems or test.
       </p>
       <div class="contact__rows reveal">

@@ -73,9 +73,8 @@
         </p>
 
         <p class="hero__blurb rise" style="--delay:300ms">
-          Altium board design, multi-rail power distribution, embedded firmware and full stack
-          software. Every project below was fabricated, wired, powered up and debugged on a bench,
-          not left in simulation.
+          Altium board design, multi-rail power, embedded firmware. Everything below was
+          fabricated, wired and debugged on a bench, not left in simulation.
         </p>
 
         <div class="hero__actions rise" style="--delay:370ms">
@@ -116,10 +115,9 @@
           Hardware first, and the software that drives it.
         </h2>
         <p class="reveal">
-          Most of my work starts at the battery and ends at a moving actuator: sizing the copper,
-          picking the fuse, stepping the rails down, then writing the firmware that closes the loop.
-          Alongside that I ship production software at a payments startup, which keeps me fluent in
-          the toolchains, testing habits and version control that hardware teams increasingly expect.
+          My work starts at the battery and ends at a moving actuator: size the copper, pick the
+          fuse, step the rails down, write the firmware that closes the loop. I also ship
+          production software at a payments startup.
         </p>
       </div>
     </div>
@@ -131,8 +129,8 @@
       <div class="section-head">
         <h2 class="reveal">Selected work</h2>
         <p class="reveal">
-          Six projects across power electronics, embedded control, mechanical design and digital
-          logic. Each one has a full write up with schematics, boards and photographs.
+          Power electronics, embedded control, mechanical design and digital logic. Each project
+          has a full write up.
         </p>
       </div>
 
@@ -156,13 +154,13 @@
               <a href="projects/golf-cart-pdb.html">Autonomous Golf Cart Power Distribution Board</a>
             </h3>
             <p class="work__summary">
-              The board that takes a 24 V traction pack and safely splits it between a brushed DC
-              motor drive and the compute stack of an autonomous golf cart.
+              Takes 24 V from a traction pack and splits it between a motor drive and the compute
+              stack of an autonomous golf cart.
             </p>
             <ul class="facts">
-              <li>Traces sized to IPC-2221 on 2 oz copper with dual layer pours and via stitching for 15 to 20 A continuous</li>
-              <li>24 V to 12 V to 5 V rail tree feeding a Raspberry Pi 5 and four ESP32 controllers</li>
-              <li>Coordinated 5 A logic and 20 A motor fusing, bulk capacitance and anti spark connectors</li>
+              <li>IPC-2221 trace sizing on 2 oz copper, 15 to 20 A continuous</li>
+              <li>24 V to 12 V to 5 V rails for a Raspberry Pi 5 and four ESP32s</li>
+              <li>5 A logic and 20 A motor fusing, bulk capacitance, anti spark connectors</li>
             </ul>
             <p class="work__cta">Open project <span class="arrow" aria-hidden="true">&rarr;</span></p>
           </div>
@@ -186,13 +184,13 @@
               <a href="projects/rc-car.html">Wireless RC Car and Electronic Steering Differential</a>
             </h3>
             <p class="work__summary">
-              A ground up RC platform: printed chassis, dual rear drive motors, and a differential
-              algorithm that trims wheel speeds through a corner instead of fighting them.
+              A printed chassis with independently driven rear wheels and firmware that trims wheel
+              speed through a corner.
             </p>
             <ul class="facts">
-              <li>Embedded C++ firmware on Arduino paired with a Python control interface for low latency wireless driving</li>
-              <li>Electronic differential that adjusts each rear motor independently during turns to improve traction</li>
-              <li>Dual buck converters and an L298N H bridge splitting an 11.1 V 3S LiPo between logic and power</li>
+              <li>Arduino C++ firmware and a Python interface, driven from a PS5 controller</li>
+              <li>Electronic differential adjusting each rear motor during turns</li>
+              <li>Dual buck converters and an L298N H bridge off an 11.1 V 3S LiPo</li>
             </ul>
             <p class="work__cta">Open project <span class="arrow" aria-hidden="true">&rarr;</span></p>
           </div>
@@ -216,13 +214,13 @@
               <a href="projects/hospital-delivery-robot.html">Hospital Autonomous Secure Delivery Car</a>
             </h3>
             <p class="work__summary">
-              An autonomous medical delivery robot with RFID access control, obstacle stopping and a
-              custom single layer shield that replaced a breadboard full of jumper wires.
+              A medical delivery robot with RFID access control and obstacle stopping, built on a
+              custom shield instead of a breadboard.
             </p>
             <ul class="facts">
-              <li>Single layer Altium shield integrating ultrasonic, RFID, Bluetooth and temperature sensing with four actuator systems</li>
-              <li>Split 5.1 V logic and 7.9 V motor rails from one 11.1 V LiPo to keep motor noise out of the sensor bus</li>
-              <li>45 minute continuous runtime, all integration tests passed, obstacle stop under 20 cm</li>
+              <li>Single layer Altium shield carrying 5 sensors and 4 actuator systems</li>
+              <li>Split 5.1 V logic and 7.9 V motor rails to keep motor noise off the sensor bus</li>
+              <li>45 minute runtime, all integration tests passed, obstacle stop under 20 cm</li>
             </ul>
             <p class="work__cta">Open project <span class="arrow" aria-hidden="true">&rarr;</span></p>
           </div>
@@ -246,13 +244,13 @@
               <a href="projects/filament-spooler.html">Automated Filament Spooler and AI Recycling System</a>
             </h3>
             <p class="work__summary">
-              The electrical half of a closed loop plastic recycling line that pulls extruded
-              filament, cools it, and winds it onto a spool at a matched speed.
+              The electrical half of a closed loop recycling line, matching puller speed to winder
+              speed so filament neither stretches nor piles up.
             </p>
             <ul class="facts">
-              <li>12 V distribution network off a 10 A to 12 A supply feeding three DC motors, dual cooling fans and an Arduino</li>
-              <li>Dual H bridge drivers coordinating pulling speed against winding speed so the filament never stretches or slackens</li>
-              <li>Current budget calculated per branch before anything was wired</li>
+              <li>12 V network off a 10 to 12 A supply for 3 DC motors, dual fans and an Arduino</li>
+              <li>Dual H bridge drivers trimming pull speed against wind speed</li>
+              <li>Current budgeted per branch before anything was wired</li>
             </ul>
             <p class="work__cta">Open project <span class="arrow" aria-hidden="true">&rarr;</span></p>
           </div>
@@ -289,13 +287,13 @@
               <a href="projects/function-generator.html">Analog Function Generator and PCB</a>
             </h3>
             <p class="work__summary">
-              A multi stage op-amp signal generator taken from simulation to a hand soldered board,
-              then measured on a scope to prove the hardware matched the model.
+              A TL082 signal generator taken from simulation to a hand soldered board, then measured
+              against the model.
             </p>
             <ul class="facts">
-              <li>Integrator and amplifier stages chained to produce square, triangle and sine output from one oscillator core</li>
-              <li>4.4 kHz at 10 V output, simulated in Micro-Cap 12 before any copper was ordered</li>
-              <li>Custom Altium board routed, populated through hole by hand and verified against the simulation</li>
+              <li>Square, triangle and sine out of one oscillator core</li>
+              <li>4.4 kHz at 10 V, simulated in Micro-Cap 12 before ordering copper</li>
+              <li>Altium board routed, populated by hand, verified on a scope</li>
             </ul>
             <p class="work__cta">Open project <span class="arrow" aria-hidden="true">&rarr;</span></p>
           </div>
@@ -350,13 +348,13 @@
               <a href="projects/fpga-sequence-detector.html">FPGA Sequence Detector and Logic Optimization</a>
             </h3>
             <p class="work__summary">
-              An 8 state Moore machine that spots a 4 bit pattern in a serial stream, then a second
-              pass that made the same behaviour measurably cheaper in gates.
+              An 8 state Moore machine that finds a 4 bit pattern in a serial stream, then a second
+              pass that made it cheaper in gates.
             </p>
             <ul class="facts">
-              <li>State assignment rewritten in Gray code so only one bit changes per transition</li>
-              <li>Karnaugh map simplification cut total gate input cost from 83 to 63, a 24 percent reduction</li>
-              <li>Timing and state transitions verified in functional simulation</li>
+              <li>Gray coded state assignment, one bit changing per transition</li>
+              <li>Karnaugh simplification cut gate input cost from 83 to 63, down 24 percent</li>
+              <li>Timing and state transitions verified in simulation</li>
             </ul>
             <p class="work__cta">Open project <span class="arrow" aria-hidden="true">&rarr;</span></p>
           </div>
@@ -372,8 +370,8 @@
       <div class="section-head">
         <h2 class="reveal">Experience</h2>
         <p class="reveal">
-          Production software at a payments startup, clinical equipment service in a hospital, and a
-          student design team building an autonomous vehicle.
+          A payments startup, a hospital biomedical department, and a student team building an
+          autonomous vehicle.
         </p>
       </div>
 
@@ -388,10 +386,10 @@
             <h3 class="role__org">u012 Inc.</h3>
             <p class="role__title">Junior Software Developer and Partner</p>
             <ul class="role__list">
-              <li>Delivered <strong>end to end card payment and security features</strong> including multi-factor authentication, fraud scoring and 3DS pre-authorization, integrating Go services with Postgres and Kafka event pipelines.</li>
-              <li>Architected a multi-LLM marketing engine combining <strong>six AI models</strong> across OpenAI, Anthropic and Ollama with pgvector search, delivering real-time streaming chat and business analytics.</li>
-              <li>Built and launched a cross platform <strong>Progressive Web App</strong> in React, TypeScript and MapLibre with interactive maps, live dashboards and iOS, Android and desktop builds.</li>
-              <li>Used AI assisted development to design, test and refactor full stack codebases, cutting repository noise by <strong>60 percent</strong> while holding a <strong>100 percent test pass rate</strong>.</li>
+              <li>Shipped <strong>end to end card payment and security features</strong> (multi-factor authentication, fraud scoring, 3DS pre-authorization) across Go services, Postgres and Kafka.</li>
+              <li>Architected a multi-LLM marketing engine across <strong>six AI models</strong> with pgvector search, streaming chat and business analytics.</li>
+              <li>Built a cross platform <strong>Progressive Web App</strong> in React, TypeScript and MapLibre, shipping iOS, Android and desktop builds.</li>
+              <li>Cut repository noise by <strong>60 percent</strong> while holding a <strong>100 percent test pass rate</strong>.</li>
             </ul>
           </div>
         </article>
@@ -405,10 +403,9 @@
             <h3 class="role__org">International Medical Center</h3>
             <p class="role__title">Biomedical Engineer Intern</p>
             <ul class="role__list">
-              <li>Diagnosed, repaired and recalibrated <strong>more than 20 clinical devices</strong> across multiple hospital departments over <strong>160 hours</strong> of hands on service, holding accuracy and safety compliance.</li>
-              <li>Troubleshot system failures and replaced a faulty <strong>programmable logic controller</strong> on a critical hospital sterilizer, restoring autoclave function and preventing downtime.</li>
-              <li>Inspected the facility wide <strong>pneumatic transport system</strong>, running systematic fault isolation and pressure checks to keep automated deliveries reliable between departments.</li>
-              <li>Executed preventative and corrective maintenance on complex biomedical systems alongside senior engineering staff.</li>
+              <li>Diagnosed, repaired and recalibrated <strong>20+ clinical devices</strong> across multiple departments over <strong>160 hours</strong> of hands on service.</li>
+              <li>Replaced a failed <strong>programmable logic controller</strong> on a critical hospital sterilizer, restoring autoclave function and preventing downtime.</li>
+              <li>Fault isolated the facility wide <strong>pneumatic transport system</strong> with systematic pressure checks.</li>
             </ul>
           </div>
         </article>
@@ -422,8 +419,8 @@
             <h3 class="role__org">Western Engineering AutoPilot</h3>
             <p class="role__title">Build Team Member</p>
             <ul class="role__list">
-              <li>Design and build electrical hardware for the team's autonomous golf cart, including the custom <strong>power distribution board</strong> that feeds the drive and compute stacks.</li>
-              <li>Built a wireless RC car testbed with a custom <strong>electronic steering differential</strong> and demonstrated it live to club leadership and project leads.</li>
+              <li>Design the electrical hardware for the team's autonomous golf cart, including the custom <strong>power distribution board</strong>.</li>
+              <li>Built a wireless RC car testbed with a custom <strong>electronic steering differential</strong> and demonstrated it to club leadership.</li>
             </ul>
             <p class="role__sub">Project write ups</p>
             <ul class="role__list" style="margin-top:0.85rem">
@@ -442,9 +439,7 @@
     <div class="shell">
       <div class="section-head">
         <h2 class="reveal">What I work with</h2>
-        <p class="reveal">
-          Tools I have shipped something real with, grouped the way the work actually splits.
-        </p>
+        <p class="reveal">Tools I have shipped something real with.</p>
       </div>
 
       <div class="skills" data-stagger>
@@ -502,8 +497,7 @@
       <div class="reveal">
         <p class="tag">Relevant coursework</p>
         <ul class="coursework">
-          <li>Electric Circuits I</li>
-          <li>Introduction to Electronics</li>
+          <li>Electric Circuits</li>
           <li>Electronic Circuits</li>
           <li>Circuits and Systems</li>
           <li>Digital Logic Systems</li>
@@ -513,8 +507,6 @@
           <li>Electric Power Systems I</li>
           <li>Signal Processing</li>
           <li>Electromagnetic Theory</li>
-          <li>Magnetic Circuits and Transmission Lines</li>
-          <li>Principles of Design in Electrical Engineering</li>
           <li>Design of Electronic Systems</li>
         </ul>
       </div>
@@ -526,9 +518,8 @@
     <div class="shell">
       <h2 class="reveal">Let's build something.</h2>
       <p class="contact__body reveal">
-        I am looking for engineering co-op and internship work in power electronics, hardware design,
-        embedded systems or test. If you have a board that needs designing or a bench that needs
-        another pair of hands, I would like to hear about it.
+        Looking for engineering co-op and internship work in power electronics, hardware design,
+        embedded systems or test.
       </p>
 
       <div class="contact__rows reveal">

@@ -154,6 +154,18 @@
   font-weight: 600;
 }
 
+.cv__more {
+  margin-top: 1.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-3);
+}
+
+.cv__more a { color: var(--signal-ink); text-decoration: none; }
+.cv__more a:hover { text-decoration: underline; }
+
 @media print {
   @page { size: letter; margin: 0.55in; }
 
@@ -164,13 +176,13 @@
   .cv-page { padding: 0 !important; }
   .cv { width: 100% !important; max-width: none !important; }
 
-  body { font-size: 10pt; line-height: 1.38; }
+  body { font-size: 9.5pt; line-height: 1.34; }
 
   .cv__name { font-size: 22pt; }
   .cv__contact { font-size: 8.5pt; margin-top: 0.4rem; color: #000 !important; }
   .cv__contact a { color: #000 !important; }
 
-  .cv__section { margin-top: 12pt; }
+  .cv__section { margin-top: 10pt; }
   .cv__section > h2 {
     font-size: 8.5pt;
     color: #000 !important;
@@ -179,14 +191,16 @@
     break-after: avoid;
   }
 
-  .cv__entry { margin-top: 8pt; }
-  .cv__org { font-size: 11pt; }
+  .cv__entry { margin-top: 7pt; }
+  .cv__org { font-size: 10.5pt; }
   .cv__when, .cv__role { font-size: 8.5pt; color: #000 !important; }
   .cv__list { gap: 2pt; margin-top: 4pt; }
-  .cv__list li { font-size: 9.5pt; line-height: 1.34; color: #000 !important; padding-left: 12pt; }
+  .cv__list li { font-size: 9pt; line-height: 1.32; color: #000 !important; padding-left: 11pt; }
   .cv__list li::before { background: #000; width: 7pt; top: 0.62em; }
   .cv__list strong { color: #000 !important; }
-  .cv__sub { font-size: 9.5pt; margin-top: 6pt; }
-  .cv__skill { font-size: 9pt; padding-block: 3pt; color: #000 !important; border-bottom: 0.4pt solid #999; }
+  .cv__sub { font-size: 9pt; margin-top: 5pt; }
+  .cv__more { margin-top: 7pt; padding-top: 4pt; font-size: 8pt; color: #000 !important; border-top: 0.4pt solid #999; }
+  .cv__more a { color: #000 !important; }
+  .cv__skill { font-size: 8.5pt; padding-block: 2.5pt; color: #000 !important; border-bottom: 0.4pt solid #999; }
   .cv__skill b { font-size: 8pt; color: #000 !important; }
 }
