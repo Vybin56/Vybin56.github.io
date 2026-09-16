@@ -100,7 +100,7 @@
       if (event.key === "ArrowLeft") { event.preventDefault(); render(index - 1); }
     });
 
-    dialog.addEventListener("close", function () { img.src = ""; });
+    dialog.addEventListener("close", function () { img.removeAttribute("src"); });
   }
 
   /* --- Section nav state ------------------------------------------------- */
